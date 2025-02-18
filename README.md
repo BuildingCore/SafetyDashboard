@@ -1,8 +1,8 @@
-# React + Vite
+# Turner Safety Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This application is intended to make the review of subcontractor safety documentation more efficient.
 
 Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Currently intended for Procurement staff only
+- Procurement is the only group with access to add or update documentation in the application
