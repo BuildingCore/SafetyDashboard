@@ -1,0 +1,27 @@
+import { useState, useEffect } from 'react'
+import { supabase } from './client'
+import { Route, Routes} from 'react-router-dom'
+
+import "bootstrap/dist/css/bootstrap.min.css"
+
+import Home from './routes/Home'
+import Trade from './routes/Trade'
+import Admin from './routes/Admin'
+import Navigation from './components/Navigation'
+
+function App() {
+
+  return (
+    <>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/trade/:id" element={<Trade />} />
+      </Routes>
+      {/* {component} */}
+    </>
+  )
+}
+
+export default App
