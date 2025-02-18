@@ -69,7 +69,7 @@ function Home() {
                             <Link to= {`/trade/${item.id}`} style= {{textDecoration: 'none'}} className='text-dark'>
                                 {item.trade_name}
                             </Link>
-                        </ListGroup.Item> // Assuming 'id' and 'text' columns
+                        </ListGroup.Item> 
                       ))}
                     </ListGroup>
                   </Col>

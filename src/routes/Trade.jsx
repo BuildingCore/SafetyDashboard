@@ -48,10 +48,10 @@ function Trade() {
           <h4 className="text-body-tertiary">Documents</h4>
           <hr />
           <ul style={{textDecoration: 'none', listStyleType: 'none', padding: '0', border: '1px solid #ccc', borderRadius: '4px'}}>
-            <li style={{borderBottom: '1px solid #ddd', padding: '4px 8px'}}>1</li>
-            <li style={{borderBottom: '1px solid #ddd', padding: '4px 8px'}}>1</li>
-            <li style={{borderBottom: '1px solid #ddd', padding: '4px 8px'}}>1</li>
-            <li style={{borderBottom: '1px solid #ddd', padding: '4px 8px'}}>1</li>
+            <li style={{borderBottom: '1px solid #ddd', padding: '4px 8px'}}>File Name 01</li>
+            <li style={{borderBottom: '1px solid #ddd', padding: '4px 8px'}}>File Name 02</li>
+            <li style={{borderBottom: '1px solid #ddd', padding: '4px 8px'}}>File Name 03</li>
+            <li style={{borderBottom: '1px solid #ddd', padding: '4px 8px'}}>File Name 04</li>
           </ul>
         </Col>
 
