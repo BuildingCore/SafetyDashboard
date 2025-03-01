@@ -10,7 +10,7 @@ function Navigation() {
           <Row>
             <Col className='text-end' style={{alignSelf: 'center'}}>
               <a href="/" style={{textDecoration: 'none'}}>
-                <h1 className='text-warning'>
+                <h1 className='text-navy'>
                   Turner
                 </h1>
               </a>
