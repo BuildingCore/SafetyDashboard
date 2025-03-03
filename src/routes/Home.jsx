@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../client'
-import { Row, Col, Button, ListGroup, Spinner } from 'react-bootstrap'
+import { Row, Col, Button, ListGroup, Spinner, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
 
-function Home() {
-  
+function Home() { 
   //State Management
   const [inputName, setInputName] = useState('')
+  const [inputProject, setInputProject] = useState('')
   const [data, setData] = useState([])
+  const [data2, setData2] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [search, setSearch] = useState()
@@ -17,20 +18,39 @@ function Home() {
   const handleChange = e => {
     setInputName(e.target.value)
   }
+  const handleProjectChange = e => {
+    setInputProject(e.target.value)
+  }
 
   //Fetch Data from the database
-  const fetchData = async () => {
+  const fetchData = async e => {
+    e.preventDefault()
+
     setLoading(true)
     setSearch(true)
     try {
       const {data, error} = await supabase
       .from('subcontractor')
       .select()
-      .eq('trade_name', inputName)
+      .textSearch('trade_name', inputName,
+        {
+          type: 'websearch',
+          config: 'english'
+        }
+      )
+
+      const {data2, error2} = await supabase
+      .from('subcontractor')
+      .select()
+      .textSearch('project_name', inputProject)
+
+      console.log(data)
 
       if(error) {
         throw error
       }
+
+      setData(data2)
       setData(data)
       setError(null)
     } catch (error) {
@@ -46,14 +66,34 @@ function Home() {
 
   return (
     <>
-      <Row className='justify-content-center mb-3' lg={2}>
-        <input type="text" 
-        placeholder='Search Trade Name'
-        value={inputName}
-        onChange={handleChange} />
-      </Row>
-      <Row className='justify-content-center mb-4' lg={2}>
-        <Button type='submit' onClick={fetchData}>Search Trade</Button>
+      <h3 className='text-center mb-4'>Search for Trade or Project</h3>
+      <Row className='justify-content-center mb-3' md={4}>
+        <Form onSubmit={fetchData} >
+          <Form.Group className='mb-3'>
+            <Form.Label className='text-center'>Trade Name</Form.Label>
+            <Form.Control 
+              className='rounded border-ternairy'
+              type="text"
+              placeholder='Search Trade Name'
+              value={inputName}
+              onChange={handleChange}
+              />
+          </Form.Group>
+          
+          {/* <Form.Group className='mb-3'>
+            <Form.Label className='text-center'>Project Name</Form.Label>
+            <Form.Control 
+            className='rounded border-ternairy'
+            type="text"
+            placeholder='Search Project Name'
+            value={inputProject}
+            onChange={handleProjectChange}
+            />
+          </Form.Group> */}
+          <Button variant='primary' type='submit' disabled={loading}>
+            {loading ? 'Search...' : 'Search'}
+          </Button>
+        </Form>
       </Row>
 
       {
@@ -62,14 +102,14 @@ function Home() {
               { loading ? (
                 <Spinner animation="border" variant="primary" />
                 ):(
-                  <Col className='' sm={4}>
+                  <Col className='' md={3}>
                     <ListGroup>
                       {data.map((item) => (
-                        <ListGroup.Item key={item.id}>
-                            <Link to= {`/trade/${item.id}`} style= {{textDecoration: 'none'}} className='text-dark'>
-                                {item.trade_name}
-                            </Link>
-                        </ListGroup.Item> 
+                        <Link to= {`/trade/${item.id}`} style= {{textDecoration: 'none'}} className='text-dark'>
+                          <ListGroup.Item className='border-0' key={item.id}>
+                            {item.trade_name}
+                          </ListGroup.Item> 
+                        </Link>
                       ))}
                     </ListGroup>
                   </Col>
@@ -77,7 +117,7 @@ function Home() {
             </Row>
         ) : (
           <>
-          {/* Show Nothing when a trade has not been Search and found */}
+            {/* Show Nothing when a trade has not been Search and found */}
           </>
         )
       }
