@@ -78,19 +78,20 @@ function Home() {
               type="text"
               value={inputName}
               onChange={handleChange}
+              disabled={inputProject !== ''}
               />
           </Form.Group>
           
-          {/* <Form.Group className='mb-3'>
+          <Form.Group className='mb-3'>
             <Form.Label className='text-center'>Project Name</Form.Label>
             <Form.Control 
             className='rounded border-ternairy'
             type="text"
-            placeholder='Search Project Name'
             value={inputProject}
             onChange={handleProjectChange}
+            disabled={inputName !== ''}
             />
-          </Form.Group> */}
+          </Form.Group>
           <Button variant='primary' type='submit' disabled={loading}>
             {loading ? 'Search...' : 'Search'}
           </Button>
