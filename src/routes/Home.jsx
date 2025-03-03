@@ -66,15 +66,16 @@ function Home() {
 
   return (
     <>
-      <h3 className='text-center mb-4'>Search for Trade or Project</h3>
+      <h3 className='text-center mb-4'>Search for Trade</h3>
       <Row className='justify-content-center mb-3' md={4}>
+        {/* TODO: Conditional Statement to disable other or the other input based on if one has text or not */}
+        
         <Form onSubmit={fetchData} >
           <Form.Group className='mb-3'>
             <Form.Label className='text-center'>Trade Name</Form.Label>
             <Form.Control 
               className='rounded border-ternairy'
               type="text"
-              placeholder='Search Trade Name'
               value={inputName}
               onChange={handleChange}
               />

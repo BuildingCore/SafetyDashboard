@@ -1,4 +1,4 @@
-import { Row, Col, Navbar, Container } from 'react-bootstrap'
+import { Row, Col, Navbar, Container, Button } from 'react-bootstrap'
 import { Link, useResolvedPath } from 'react-router-dom'
 
 function Navigation() {
@@ -10,23 +10,23 @@ function Navigation() {
           <Row>
             <Col className='text-end' style={{alignSelf: 'center'}}>
               <a href="/" style={{textDecoration: 'none'}}>
-                <h1 className='text-navy'>
-                  Turner
+                <h1 style={{color: 'navy'}}>
+                  <strong>Turner</strong>
                 </h1>
               </a>
             </Col>
             <Col style={{alignSelf: 'center'}}>
               <h5 className='text-dark m-0'>
-                Safety Dashboard
+                Trade Management Dashboard
               </h5>
             </Col>
           </Row>
         </Col>
         <Col className='text-end' style={{marginRight: '3rem', alignSelf: 'center'}}>
           <Link to="/admin" style={{textDecoration: 'none'}}>
-            <h5>
-              Admin
-            </h5>
+            <Button>
+              Admininstrator
+            </Button>
           </Link>
         </Col>
       </Row>
