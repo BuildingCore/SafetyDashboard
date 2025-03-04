@@ -9,7 +9,7 @@ function Home() {
   const [inputName, setInputName] = useState('')
   const [inputProject, setInputProject] = useState('')
   const [data, setData] = useState([])
-  const [data2, setData2] = useState([])
+  const [projectData, setProjectData] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [search, setSearch] = useState()
@@ -22,12 +22,12 @@ function Home() {
     setInputProject(e.target.value)
   }
 
-  //Fetch Data from the database
+  //Fetch Subcontractor Data 
   const fetchData = async e => {
     e.preventDefault()
-
     setLoading(true)
     setSearch(true)
+
     try {
       const {data, error} = await supabase
       .from('subcontractor')
@@ -39,20 +39,43 @@ function Home() {
         }
       )
 
-      const {data2, error2} = await supabase
-      .from('subcontractor')
-      .select()
-      .textSearch('project_name', inputProject)
+      if(error) {
+        throw error
+      }
 
-      console.log(data)
+      setData(data)
+      setError(null)
+    } catch (error) {
+      console.log('Error fetching data: ', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  //Fetch Project Data
+  const fetchProjectData = async e => {
+    e.preventDefault()
+    setLoading(true)
+    setSearch(true)
+
+    try {
+      const {data, error} = await supabase
+      .from('projects')
+      .select()
+      .textSearch('project_name', inputProject,
+        {
+          type: 'websearch',
+          config: 'english'
+        }
+      )
 
       if(error) {
         throw error
       }
 
-      setData(data2)
-      setData(data)
+      setProjectData(data)
       setError(null)
+
     } catch (error) {
       console.log('Error fetching data: ', error)
     } finally {
@@ -68,9 +91,9 @@ function Home() {
     <>
       <h3 className='text-center mb-4'>Search for Trade</h3>
       <Row className='justify-content-center mb-3' md={4}>
-        {/* TODO: Conditional Statement to disable other or the other input based on if one has text or not */}
-        
-        <Form onSubmit={fetchData} >
+        <Form onSubmit={
+          inputName ? (fetchData) : (fetchProjectData)
+        }>
           <Form.Group className='mb-3'>
             <Form.Label className='text-center'>Trade Name</Form.Label>
             <Form.Control 
@@ -100,23 +123,47 @@ function Home() {
 
       {
         search ? (
-            <Row className="text-center justify-content-center">
-              { loading ? (
-                <Spinner animation="border" variant="primary" />
-                ):(
-                  <Col className='' md={3}>
-                    <ListGroup>
-                      {data.map((item) => (
-                        <Link to= {`/trade/${item.id}`} style= {{textDecoration: 'none'}} className='text-dark'>
-                          <ListGroup.Item className='border-0' key={item.id}>
-                            {item.trade_name}
-                          </ListGroup.Item> 
-                        </Link>
-                      ))}
-                    </ListGroup>
-                  </Col>
-              )}
-            </Row>
+          <>
+            {
+              inputName ? (
+                <Row className="text-center justify-content-center">
+                  { loading ? (
+                    <Spinner animation="border" variant="primary" />
+                    ):(
+                      <Col className='' md={3}>
+                        <ListGroup>
+                          {data.map((item) => (
+                            <Link to= {`/trade/${item.id}`} style= {{textDecoration: 'none'}} className='text-dark'>
+                              <ListGroup.Item className='border-0' key={item.id}>
+                                {item.trade_name}
+                              </ListGroup.Item> 
+                            </Link>
+                          ))}
+                        </ListGroup>
+                      </Col>
+                  )}
+                </Row>
+              ) : (
+                <Row className="text-center justify-content-center">
+                  { loading ? (
+                    <Spinner animation="border" variant="primary" />
+                    ):(
+                      <Col className='' md={3}>
+                        <ListGroup>
+                          {projectData.map((item) => (
+                            <Link to= {`/project/${item.id}`} style= {{textDecoration: 'none'}} className='text-dark'>
+                              <ListGroup.Item className='border-0' key={item.id}>
+                                {item.project_name}
+                              </ListGroup.Item> 
+                            </Link>
+                          ))}
+                        </ListGroup>
+                      </Col>
+                  )}
+                </Row>
+              )
+            }
+          </>            
         ) : (
           <>
             {/* Show Nothing when a trade has not been Search and found */}

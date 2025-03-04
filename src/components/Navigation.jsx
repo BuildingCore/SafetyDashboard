@@ -17,7 +17,7 @@ function Navigation() {
             </Col>
             <Col style={{alignSelf: 'center'}}>
               <h5 className='text-dark m-0'>
-                Trade Management Dashboard
+                Project Management Dashboard
               </h5>
             </Col>
           </Row>
