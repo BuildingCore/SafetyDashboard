@@ -62,27 +62,59 @@ function Admin() {
   }
 
   return (
-      <Container className='justify-content-center'>
-        <form onSubmit={handleSubmit}>
-          <input type="text"
-          value={inputName}
-          onChange={handleChange}
-           />
-          <Button variant='warning' type='submit' disabled={loading}>
-            {loading ? 'Submitting...' : 'Submit'}
-          </Button>
-        </form>
+    <>
+      <Container>
+        <Row className='border p-3 rounded'>
+          <Col>
+          {/* Add onClick logic */}
+            <Button className='me-4'>New Trade</Button>
+            <Button>Search Trade</Button>
+          </Col>
+        </Row>
 
-        {loading ? (
-          <Spinner animation="border" variant="primary" />
-        ): (
-          <ul>
-            {data.map((item) => (
-              <li key={item.id}>{item.trade_name}</li> // Assuming 'id' and 'text' columns
-            ))}
-          </ul>
-        )}
+        <Row>
+          <Col className='border p-3 mt-3 rounded'>
+            Project Metrics
+          </Col>
+
+          <Col className='border p-3 mt-3 mx-3 rounded'>
+            Trade Metrics
+          </Col>
+
+          <Col className='border p-3 mt-3 rounded'>
+            Procurement Information
+          </Col>
+        </Row>
+
       </Container>
+    
+    </>
+
+
+
+
+
+      // <Container className='justify-content-center'>
+      //   <form onSubmit={handleSubmit}>
+      //     <input type="text"
+      //     value={inputName}
+      //     onChange={handleChange}
+      //      />
+      //     <Button variant='warning' type='submit' disabled={loading}>
+      //       {loading ? 'Submitting...' : 'Submit'}
+      //     </Button>
+      //   </form>
+
+      //   {loading ? (
+      //     <Spinner animation="border" variant="primary" />
+      //   ): (
+      //     <ul>
+      //       {data.map((item) => (
+      //         <li key={item.id}>{item.trade_name}</li> // Assuming 'id' and 'text' columns
+      //       ))}
+      //     </ul>
+      //   )}
+      // </Container>
   );
 }
 

@@ -21,7 +21,6 @@ function App() {
         <Route path="/trade/:id" element={<Trade />} />
         <Route path="/project/:id" element={<Project />} />
       </Routes>
-      {/* {component} */}
     </>
   )
 }

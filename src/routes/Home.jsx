@@ -94,6 +94,7 @@ function Home() {
         <Form onSubmit={
           inputName ? (fetchData) : (fetchProjectData)
         }>
+          {/* Trade Name Input */}
           <Form.Group className='mb-3'>
             <Form.Label className='text-center'>Trade Name</Form.Label>
             <Form.Control 
@@ -105,6 +106,7 @@ function Home() {
               />
           </Form.Group>
           
+          {/* Project Input */}
           <Form.Group className='mb-3'>
             <Form.Label className='text-center'>Project Name</Form.Label>
             <Form.Control 
@@ -120,7 +122,6 @@ function Home() {
           </Button>
         </Form>
       </Row>
-
       {
         search ? (
           <>
