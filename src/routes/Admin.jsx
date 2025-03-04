@@ -65,9 +65,9 @@ function Admin() {
     <>
       <Container>
         <Row className='border p-3 rounded'>
-          <Col>
+          <Col className='p-0'>
           {/* Add onClick logic */}
-            <Button className='me-4'>New Trade</Button>
+            <Button className='me-3'>New Trade</Button>
             <Button>Search Trade</Button>
           </Col>
         </Row>
