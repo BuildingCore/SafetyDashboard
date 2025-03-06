@@ -33,7 +33,6 @@ function OSHA(osha) {
 
   return (
     <>
-    {/*  */}
       {
           data && data.map((item) => (
               <Row style={{margin: '4px 0', padding: '0'}} key={item.year}>
@@ -43,7 +42,7 @@ function OSHA(osha) {
                   <Col className="text-center">{item.i}</Col>
                   <Col className="text-center">{item.j}</Col>
                   <Col sm={3} className="p-0 text-end">{item.hours}</Col>
-                  <Col sm={2} className="text-center"><mark style={{padding: '0 8px', borderRadius: '4px'}}>{item.rir}</mark></Col>
+                  <Col sm={2} className="text-center"><mark className="bg-light" style={{padding: '0 8px', borderRadius: '4px'}}>{item.rir}</mark></Col>
               </Row>
           ))
       }

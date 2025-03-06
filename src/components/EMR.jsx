@@ -43,7 +43,7 @@ function EMR() {
               {fetchError && (<p>{fetchError}</p>)}
               {data && (<> 
                 {data.map(data => (
-                  <mark style={{padding: '0 8px', borderRadius: '4px'}} key={id}>{data.emr_rate}</mark>
+                  <mark className="bg-light" style={{padding: '0 8px', borderRadius: '4px'}} key={id}>{data.emr_rate}</mark>
                 ))}
                 </>
               )}
@@ -56,7 +56,7 @@ function EMR() {
                   {fetchError && (<p>{fetchError}</p>)}
                   {data && (<> 
                   {data.map(data => (
-                      <mark style={{padding: '0 8px', borderRadius: '4px'}} key={id}>{data.eff_date}</mark>
+                      <mark className="bg-light" style={{padding: '0 8px', borderRadius: '4px'}} key={id}>{data.eff_date}</mark>
                   ))}
                   </>
                   )}
@@ -71,7 +71,7 @@ function EMR() {
           {/* <hr className="mt-1"/> */}
         </Col>
         <Col className="text-end" sm={4}>
-          <h5>3yr RIR: <mark>2.01</mark></h5>
+          <h5>3yr RIR: <mark className="bg-success rounded">0.98</mark></h5>
         </Col>
       </Row>
       <Row style={{margin: '4px 0', padding: '0'}}>

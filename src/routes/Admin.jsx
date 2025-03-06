@@ -1,6 +1,6 @@
 import { useState, useEffect, use } from 'react'
 import { supabase } from '../client'
-import { Container, Row, Col, Button, Spinner } from 'react-bootstrap'
+import { Container, Row, Col, Button, Spinner, Offcanvas } from 'react-bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Link } from 'react-router-dom'
 
@@ -10,6 +10,16 @@ function Admin() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+
+  //New Trade Drawer State Management
+  const [showTrade, setShowTrade] = useState(false);
+  const handleClose = () => setShowTrade(false);
+  const handleShow = () => setShowTrade(true);
+
+  //New Project Drawer State Management
+  const [showProject, setShowProject] = useState(false);
+  const handleClosePjt = () => setShowProject(false);
+  const handleShowPjt = () => setShowProject(true);
 
   //Handles Form Input Change
   const handleChange = e => {
@@ -67,8 +77,8 @@ function Admin() {
         <Row className='border p-3 rounded'>
           <Col className='p-0'>
           {/* Add onClick logic */}
-            <Button className='me-3' style={{width: '118px'}} variant="outline-primary">Add Trade</Button>
-            <Button className='me-3' style={{width: '118px'}} variant="outline-primary">Add Project</Button>
+            <Button className='me-3' style={{width: '118px'}} variant="outline-primary" onClick={handleShow}>Add Trade</Button>
+            <Button className='me-3' style={{width: '118px'}} variant="outline-primary" onClick={handleShowPjt}>Add Project</Button>
             <Link to={'/'} style={{textDecoration: 'none'}}>
               <Button style={{width: '118px'}} variant="outline-secondary">Search</Button>
             </Link>
@@ -83,12 +93,36 @@ function Admin() {
           </Col>
 
           <Col className='border p-3 mt-3 rounded'>
-            Procurement Information
+            <h5>Procurement Information</h5>
+            <hr />
           </Col>
         </Row>
 
       </Container>
     
+      {/* Add New Trade Drawer */}
+      <Offcanvas show={showTrade} onHide={handleClose} backdrop="static">
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Add New Trade</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <h2>This is a Component</h2>
+          <Button onClick={handleClose}>Submit</Button>
+          {/* When the submit button is pushed the function needs to setShowTrade to false to close the modal and reset the inputs to empty strings */}
+        </Offcanvas.Body>
+      </Offcanvas>
+
+      {/* Add New Project Drawer */}
+      <Offcanvas show={showProject} onHide={handleClosePjt} backdrop="static">
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Add New Project</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <h2>This is a Component</h2>
+          <Button onClick={handleClosePjt}>Submit</Button>
+          {/* When the submit button is pushed the function needs to setShowTrade to false to close the modal and reset the inputs to empty strings */}
+        </Offcanvas.Body>
+      </Offcanvas>
     </>
 
 
