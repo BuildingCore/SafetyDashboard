@@ -24,7 +24,7 @@ function Navigation() {
         </Col>
         <Col className='text-end' style={{marginRight: '3rem', alignSelf: 'center'}}>
           <Link to="/admin" style={{textDecoration: 'none'}}>
-            <Button>
+            <Button variant='outline-secondary'>
               Admininstrator
             </Button>
           </Link>

@@ -67,18 +67,19 @@ function Admin() {
         <Row className='border p-3 rounded'>
           <Col className='p-0'>
           {/* Add onClick logic */}
-            <Button className='me-3'>New Trade</Button>
-            <Button>Search Trade</Button>
+            <Button className='me-3' style={{width: '118px'}} variant="outline-primary">Add Trade</Button>
+            <Button className='me-3' style={{width: '118px'}} variant="outline-primary">Add Project</Button>
+            <Link to={'/'} style={{textDecoration: 'none'}}>
+              <Button style={{width: '118px'}} variant="outline-secondary">Search</Button>
+            </Link>
           </Col>
         </Row>
 
         <Row>
-          <Col className='border p-3 mt-3 rounded'>
-            Project Metrics
-          </Col>
-
-          <Col className='border p-3 mt-3 mx-3 rounded'>
-            Trade Metrics
+          <Col className='border p-3 mt-3 me-3 rounded'>
+            <h5>Active Projects</h5>
+            <hr />
+            {/* Table: Job # | Job Name */}
           </Col>
 
           <Col className='border p-3 mt-3 rounded'>
