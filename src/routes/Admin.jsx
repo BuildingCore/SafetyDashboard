@@ -4,6 +4,10 @@ import { Container, Row, Col, Button, Spinner, Offcanvas } from 'react-bootstrap
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Link } from 'react-router-dom'
 
+//Form Components
+import FormNewTrade from '../components/formNewTrade'
+import FormNewProject from '../components/formNewProject'
+
 function Admin() {
   //State Management
   const [inputName, setInputName] = useState('')                                                                                                                               
@@ -103,11 +107,13 @@ function Admin() {
       {/* Add New Trade Drawer */}
       <Offcanvas show={showTrade} onHide={handleClose} backdrop="static">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Add New Trade</Offcanvas.Title>
+          <Offcanvas.Title>New Trade</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <h2>This is a Component</h2>
-          <Button onClick={handleClose}>Submit</Button>
+          
+          <FormNewTrade />
+          {/* <h2>This is a Component</h2>
+          <Button onClick={handleClose}>Submit</Button> */}
           {/* When the submit button is pushed the function needs to setShowTrade to false to close the modal and reset the inputs to empty strings */}
         </Offcanvas.Body>
       </Offcanvas>
@@ -115,41 +121,17 @@ function Admin() {
       {/* Add New Project Drawer */}
       <Offcanvas show={showProject} onHide={handleClosePjt} backdrop="static">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Add New Project</Offcanvas.Title>
+          <Offcanvas.Title>New Project</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <h2>This is a Component</h2>
-          <Button onClick={handleClosePjt}>Submit</Button>
+            <FormNewProject />
+          {/* <h2>This is a Component</h2>
+          <Button onClick={handleClosePjt}>Submit</Button> */}
           {/* When the submit button is pushed the function needs to setShowTrade to false to close the modal and reset the inputs to empty strings */}
         </Offcanvas.Body>
       </Offcanvas>
     </>
 
-
-
-
-
-      // <Container className='justify-content-center'>
-      //   <form onSubmit={handleSubmit}>
-      //     <input type="text"
-      //     value={inputName}
-      //     onChange={handleChange}
-      //      />
-      //     <Button variant='warning' type='submit' disabled={loading}>
-      //       {loading ? 'Submitting...' : 'Submit'}
-      //     </Button>
-      //   </form>
-
-      //   {loading ? (
-      //     <Spinner animation="border" variant="primary" />
-      //   ): (
-      //     <ul>
-      //       {data.map((item) => (
-      //         <li key={item.id}>{item.trade_name}</li> // Assuming 'id' and 'text' columns
-      //       ))}
-      //     </ul>
-      //   )}
-      // </Container>
   );
 }
 

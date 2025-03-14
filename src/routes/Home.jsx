@@ -28,6 +28,7 @@ function Home() {
     setLoading(true)
     setSearch(true)
 
+    //Add No Input Error Message so a user can't just search
     try {
       const {data, error} = await supabase
       .from('subcontractor')
