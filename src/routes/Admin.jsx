@@ -5,8 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { Link } from 'react-router-dom'
 
 //Form Components
-import FormNewTrade from '../components/formNewTrade'
-import FormNewProject from '../components/formNewProject'
+import FormNewTrade from '../components/FormNewTrade'
+import FormNewProject from '../components/FormNewProject'
 
 function Admin() {
   //State Management
