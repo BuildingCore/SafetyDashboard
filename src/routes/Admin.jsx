@@ -105,29 +105,26 @@ function Admin() {
       </Container>
     
       {/* Add New Trade Drawer */}
-      <Offcanvas show={showTrade} onHide={handleClose} backdrop="static">
+      <Offcanvas show={showTrade} onHide={handleClose} backdrop="static" className="w-75">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>New Trade</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           
           <FormNewTrade />
-          {/* <h2>This is a Component</h2>
-          <Button onClick={handleClose}>Submit</Button> */}
-          {/* When the submit button is pushed the function needs to setShowTrade to false to close the modal and reset the inputs to empty strings */}
+          
         </Offcanvas.Body>
       </Offcanvas>
 
       {/* Add New Project Drawer */}
-      <Offcanvas show={showProject} onHide={handleClosePjt} backdrop="static">
+      <Offcanvas show={showProject} onHide={handleClosePjt} backdrop="static" className="w-75">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>New Project</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
+
             <FormNewProject />
-          {/* <h2>This is a Component</h2>
-          <Button onClick={handleClosePjt}>Submit</Button> */}
-          {/* When the submit button is pushed the function needs to setShowTrade to false to close the modal and reset the inputs to empty strings */}
+          
         </Offcanvas.Body>
       </Offcanvas>
     </>
